@@ -1,65 +1,92 @@
 const button = document.querySelector("#myBtn");
 
-let a = document.querySelector('#quadraticTermA');
-let b = document.querySelector('#quadraticTermB');
-let c = document.querySelector('#quadraticTermC');
+let inputA = document.querySelector('#quadraticTermA');
+let inputB = document.querySelector('#quadraticTermB');
+let inputC = document.querySelector('#quadraticTermC');
 let formula = document.querySelector('#formula');
 let result = document.querySelector('#response');
 
 function myEquation() { 
 
-    let coefficientA = parseInt(a.value);
-    let coefficientB = parseInt(b.value);
-    let coefficientC = parseInt(c.value);
+    let coefficientA = parseInt(inputA.value);
+    let coefficientB = parseInt(inputB.value);
+    let coefficientC = parseInt(inputC.value);
 
-    let delta = coefficientB ** 2 - 4 * coefficientA * coefficientC;
+    let a = coefficientA;
+    let b = coefficientB;
+    let c = coefficientC;   
+    
+    let delta = (coefficientB ** 2) - 4 * coefficientA* coefficientC;
+    let deltaRoot = Math.sqrt(delta);
+    let negativeCoefficientB = (-coefficientB); 
+
+    let firstRoot =  (negativeCoefficientB + deltaRoot) / (coefficientA * (2));
+    let secondRoot = (negativeCoefficientB - deltaRoot) / (coefficientA * (2));          
+
+    let expression = (-4) * a * c;
+    let exponentiation = b**2;
+    let operator = (expression > 0) ? "+" : "";
 
     if (delta < 0) {
 
-        result.innerHTML = `A equação não possui raízes reais,<br> apenas raízes complexas.`;
+        result.innerHTML = `Δ = ${b}² - 4. ${a} .${c} <br> Δ = ${exponentiation} ${operator} ${expression} <br> 
+        Δ = ${exponentiation + expression} <br> √ ${exponentiation + expression} = ${deltaRoot.toFixed(1)}
+         <br> A equação não possui raízes reais,<br> apenas raízes complexas.`;
 
-    } else if (delta === 0) {
+    } else if (delta === 0) { 
+        
+        result.innerHTML = `Δ = ${b}² - 4. ${a} .${c} <br> Δ = ${exponentiation} ${operator} ${expression} <br> 
+        Δ = ${exponentiation + expression} <br> √ ${exponentiation + expression} = ${deltaRoot.toFixed(1)}
+         <br><br> x' = ${negativeCoefficientB} + ${deltaRoot.toFixed(1)} / ${a * (2)} = ${firstRoot.toFixed(1)}
+          <br> x" = ${negativeCoefficientB} - ${deltaRoot.toFixed(1)} / ${a * (2)} = ${secondRoot.toFixed(1)}
+           <br> A equação possui duas raízes<br> reais iguais: <br>{${firstRoot.toFixed(1)}} e {${secondRoot.toFixed(1)}}`;
 
-        let root = -coefficientB / (2 * coefficientA);
-        result.innerHTML = `A equação possui duas raízes<br> reais iguais: <br>{${Math.round(root)}} e {${Math.round(root)}}`;
+    } else if (delta > 0){         
 
-    } else if (delta > 0){
+        result.innerHTML = `
+        Δ = ${b}² - 4. ${a} .${c} <br> Δ = ${exponentiation} ${operator} ${expression} <br> 
+        Δ = ${exponentiation + expression} <br> √ ${exponentiation + expression} = ${deltaRoot.toFixed(1)}
+         <br><br>x = ${negativeCoefficientB} ± ${deltaRoot.toFixed(1)} / ${a * (2)}
+          <br> x' = ${negativeCoefficientB} + ${deltaRoot.toFixed(1)} / ${a * (2)} = ${firstRoot.toFixed(1)}
+          <br> x" = ${negativeCoefficientB} - ${deltaRoot.toFixed(1)} / ${a * (2)} = ${secondRoot.toFixed(1)}
+           <br> A equação possui duas raízes<br> reais e distintas: <br>{${firstRoot.toFixed(1)}} e {${secondRoot.toFixed(1)}}<br>`;
 
-        let firstRoot = (-coefficientB + Math.sqrt(delta)) / (2 * coefficientA);
-        let secondRoot = (-coefficientB - Math.sqrt(delta)) / (2 * coefficientA);
-        result.innerHTML = `A equação possui duas raízes<br> reais e distintas: <br>{${Math.round(firstRoot)}} e {${Math.round(secondRoot)}}`;
     } else {
 
-        alert('Digite todos coeficientes da equação!')
+        alert('Digite todos os coeficientes da equação!')
     }
 }
 
 button.addEventListener("click", myEquation);
 
-// Adicionar evento para acionar a função ao pressionar Enter
-a.addEventListener("keyup", function(event) {
+
+inputA.addEventListener("keyup", function(event) {
     if (event.key === "Enter") {
         myEquation();
     }
 });
 
-b.addEventListener("keyup", function(event) {
+inputB.addEventListener("keyup", function(event) {
     if (event.key === "Enter") {
         myEquation();
     }
 });
 
-c.addEventListener("keyup", function(event) {
+inputC.addEventListener("keyup", function(event) {
     if (event.key === "Enter") {
         myEquation();
     }
 });
 
+function reflect() {   
+    
+   let textA = inputA.value;
+   let textB = inputB.value; 
+   let textC = inputC.value; 
+   let operatorB = (textB > 0) ? "+" : "";    
+   let operatorC = (textC > 0) ? "+" : "";
 
-function reflect() {
+   formula.innerHTML = `${textA}x² ${operatorB} ${textB}x ${operatorC} ${textC} = 0`; 
 
-
-
-};
-  
+}; 
 
