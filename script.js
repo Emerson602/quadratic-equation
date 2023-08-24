@@ -29,27 +29,33 @@ function myEquation() {
 
     if (delta < 0) {
 
-        result.innerHTML = `Δ = ${b}² - 4. ${a} .${c} <br> Δ = ${exponentiation} ${operator} ${expression} <br> 
-        Δ = ${exponentiation + expression} <br> √ ${exponentiation + expression} = ${deltaRoot.toFixed(1)}
-         <br> A equação não possui raízes reais,<br> apenas raízes complexas.`;
+        result.innerHTML = `Δ = ${b}² - 4. ${a} .${c} <br>
+        Δ = ${exponentiation} ${operator} ${expression} <br> 
+        Δ = ${exponentiation + expression} <br>
+        √ ${exponentiation + expression} = ${deltaRoot.toFixed(1)} <br>
+        A equação não possui raízes reais,<br> apenas raízes complexas.`;
 
     } else if (delta === 0) { 
         
-        result.innerHTML = `Δ = ${b}² - 4. ${a} .${c} <br> Δ = ${exponentiation} ${operator} ${expression} <br> 
-        Δ = ${exponentiation + expression} <br> √ ${exponentiation + expression} = ${deltaRoot.toFixed(1)}
-         <br><br> x' = ${negativeCoefficientB} + ${deltaRoot.toFixed(1)} / ${a * (2)} = ${firstRoot.toFixed(1)}
-          <br> x" = ${negativeCoefficientB} - ${deltaRoot.toFixed(1)} / ${a * (2)} = ${secondRoot.toFixed(1)}
-           <br> A equação possui duas raízes<br> reais iguais: <br>{${firstRoot.toFixed(1)}} e {${secondRoot.toFixed(1)}}`;
+        result.innerHTML = `Δ = ${b}² - 4. ${a} .${c} <br> 
+        Δ = ${exponentiation} ${operator} ${expression} <br> 
+        Δ = ${exponentiation + expression} <br> 
+        √ ${exponentiation + expression} = ${deltaRoot.toFixed(1)} <br><br>          
+        x' = ${negativeCoefficientB} + ${deltaRoot.toFixed(1)} / ${a * (2)} = ${firstRoot.toFixed(1)} <br>           
+        x" = ${negativeCoefficientB} - ${deltaRoot.toFixed(1)} / ${a * (2)} = ${secondRoot.toFixed(1)} <br>
+        A equação possui duas raízes<br> reais iguais: <br>
+        {${firstRoot.toFixed(1)}} e {${secondRoot.toFixed(1)}}`;
 
     } else if (delta > 0){         
 
         result.innerHTML = `
         Δ = ${b}² - 4. ${a} .${c} <br> Δ = ${exponentiation} ${operator} ${expression} <br> 
-        Δ = ${exponentiation + expression} <br> √ ${exponentiation + expression} = ${deltaRoot.toFixed(1)}
-         <br><br>x = ${negativeCoefficientB} ± ${deltaRoot.toFixed(1)} / ${a * (2)}
-          <br> x' = ${negativeCoefficientB} + ${deltaRoot.toFixed(1)} / ${a * (2)} = ${firstRoot.toFixed(1)}
-          <br> x" = ${negativeCoefficientB} - ${deltaRoot.toFixed(1)} / ${a * (2)} = ${secondRoot.toFixed(1)}
-           <br> A equação possui duas raízes<br> reais e distintas: <br>{${firstRoot.toFixed(1)}} e {${secondRoot.toFixed(1)}}<br>`;
+        Δ = ${exponentiation + expression} <br> √ ${exponentiation + expression} = ${deltaRoot.toFixed(1)} <br><br>         
+        x = ${negativeCoefficientB} ± ${deltaRoot.toFixed(1)} / ${a * (2)}<br>           
+        x' = ${negativeCoefficientB} + ${deltaRoot.toFixed(1)} / ${a * (2)} = ${firstRoot.toFixed(1)} <br>           
+        x" = ${negativeCoefficientB} - ${deltaRoot.toFixed(1)} / ${a * (2)} = ${secondRoot.toFixed(1)} <br> 
+        A equação possui duas raízes<br> reais e distintas: <br>
+        {${firstRoot.toFixed(1)}} e {${secondRoot.toFixed(1)}} <br>`;
 
     } else {
 
